@@ -1,6 +1,13 @@
 from flask import Flask
-from datetime import datetime
+import datetime
+
+now = datetime.datetime.now()
+
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    pass
 
 @app.route('/Santiago')
 def Santiago():
@@ -12,8 +19,7 @@ def helloworld():
 
 @app.route('/currentservertime')
 def currentservertime():
-    currentservertime = datetime.datetime.now()
-    return currentservertime
+    return now.strftime("%Y%m%dT%H%M%S")
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
